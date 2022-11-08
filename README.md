@@ -9,7 +9,7 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 >
 >*(voir ci_dessous)*
 
-![](/F202/src/images/220px-Sokoban_ani.gif)
+![](/src/images/220px-Sokoban_ani.gif)
 
 
 ---
