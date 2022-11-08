@@ -9,7 +9,9 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 >*(voir ci_dessous)*
 
 <p align="center">
+  
 ![](/src/images/220px-Sokoban_ani.gif)
+ 
 </p>
 
 ---
