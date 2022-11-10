@@ -17,24 +17,42 @@ class Board {
     int h;
     std::vector<std::vector<int>> *board;
     std::vector<Point> targets;
+    Point *player;
 
     void loadBoard(std::string level); // loads a matrix from a .txt files
 
 public:
     Board();
 
-    bool isOccupied(const Point &position); // is a position occupied by an object
+    ~Board();
+
+    bool isEmpty(const Point &position); // is a position occupied by an object
 
     bool isCrate(const Point &position);
 
-    bool isMovableCrate(const Point &position, const Point &direction); //Point direction contient {1,0}/{0,1}/{0,-1}/{-1,0}
-                                                                          // Descendre / Avancer à droite / Avancer à gauche / Monter                                  
-    bool isPlayerMovable(const Point &position, const Point &direction);
-
+    bool isMovable(const Point &position, const Point &direction); //Point direction contient {1,0}/{0,1}/{0,-1}/{-1,0}
+                                                                          // Descendre / Avancer à droite / Avancer à gauche / Monter
+    /**
+    *
+    * @param position
+    * @param destination
+    * @param direction
+    *
+    * @brief method called only after a "isMovable" in game Loop;
+    */
     void movePlayer(const Point &destination); // moves the player in the matrix
+
+    /**
+    *
+    * @param base
+    * @param movedTo
+    * @brief change appropriate values in board
+    */
+    void updateBoard(const Point &base, const Point &movedTo);
 
     void saveBoard(); //nothing for now
 
+    void loadBoard();
 };
 
 
