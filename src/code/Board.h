@@ -15,7 +15,7 @@
 class Board {
     int w;
     int h;
-    std::vector<std::vector<int>> board;
+    std::vector<std::vector<int>> *board;
     std::vector<Point> targets;
 
     void loadBoard(std::string level); // loads a matrix from a .txt files
