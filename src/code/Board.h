@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../shared/block_values.h"
+#include "../shared/directions.h"
 #include "Point.h"
 
 #ifndef F202_PROJET_BOARD_H
@@ -26,9 +27,9 @@ public:
 
     bool isCrate(const Point &position);
 
-    bool isMovableCrate();
-
-    bool isPlayerMovable(const Point &position);
+    bool isMovableCrate(const Point &position, const Point &direction); //Point direction contient {1,0}/{0,1}/{0,-1}/{-1,0}
+                                                                          // Descendre / Avancer à droite / Avancer à gauche / Monter                                  
+    bool isPlayerMovable(const Point &position, const Point &direction);
 
     void movePlayer(const Point &destination); // moves the player in the matrix
 

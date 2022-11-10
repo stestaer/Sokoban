@@ -7,6 +7,10 @@
 
 
 class Point {
+    
+    
+public:
+
     int y;
     int x;
 
