@@ -14,7 +14,7 @@ Board::~Board() {}
 
 void Board::updateBoard(const Point &base, const Point &movedTo){
     board[movedTo.y][movedTo.x] = board[base.y][base.x];
-    board[base.y][base.x] == CORRIDOR;
+    board[base.y][base.x] = CORRIDOR;
 }
 
 
