@@ -1,10 +1,13 @@
-#include "../code/Point.h"
+#pragma once
 
 #include <vector>
 
-Point RIGHT{0,1};
-Point LEFT{-1,0};
-Point UP{-1,0};
-Point DOWN{1,0};
+#include "../code/Point.h"
 
-std::vector<Point>DIRECTIONS{RIGHT,LEFT,UP,DOWN};
+
+const Point RIGHT{0,1};
+const Point LEFT{-1,0};
+const Point UP{-1,0};
+const Point DOWN{1,0};
+
+const std::vector<Point>DIRECTIONS{RIGHT,LEFT,UP,DOWN};

@@ -3,6 +3,9 @@
 //
 #include <vector>
 #include <string>
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
 
 #include "../shared/block_values.h"
 #include "../shared/directions.h"
@@ -15,14 +18,13 @@
 class Board {
     int w;
     int h;
-    std::vector<std::vector<int>> *board;
+    std::vector<std::vector<int>> board;
     std::vector<Point> targets;
-    Point *player;
+    Point player;
 
-    void loadBoard(std::string level); // loads a matrix from a .txt files
 
 public:
-    Board();
+    Board(const std::string &level="");
 
     ~Board();
 
@@ -40,7 +42,7 @@ public:
     *
     * @brief method called only after a "isMovable" in game Loop;
     */
-    void movePlayer(const Point &destination); // moves the player in the matrix
+    void movePlayer(const Point &position,const Point &destination, const int &object=PLAYER); // moves the player in the matrix
 
     /**
     *
@@ -52,7 +54,13 @@ public:
 
     void saveBoard(); //nothing for now
 
-    void loadBoard();
+    void loadBoard(std::string &level); // loads a matrix from a .txt files
+
+    const std::vector<std::vector<int>>& getBoard();
+
+    void loadBoard(const std::string &text_file);
+
+    void printBoard();
 };
 
 
