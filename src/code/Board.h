@@ -7,9 +7,10 @@
 #include <stdio.h>
 #include <fstream>
 
-#include "../shared/block_values.h"
-#include "../shared/directions.h"
-#include "Point.h"
+#include "shared/block_values.h"
+#include "shared/directions.h"
+#include "shared/Point.h"
+#include "Cell/Cell.h"
 
 #ifndef F202_PROJET_BOARD_H
 #define F202_PROJET_BOARD_H
@@ -54,7 +55,7 @@ public:
 
     void saveBoard(); //nothing for now
 
-    void loadBoard(std::string &level); // loads a matrix from a .txt files
+    //void loadBoard(std::string &level); // loads a matrix from a .txt files
 
     const std::vector<std::vector<int>>& getBoard();
 

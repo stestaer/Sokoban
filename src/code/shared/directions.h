@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../code/Point.h"
+#include "Point.h"
 
 
 const Point RIGHT{0,1};
