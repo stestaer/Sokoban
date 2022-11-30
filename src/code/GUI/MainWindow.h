@@ -1,6 +1,12 @@
 //
 // Created by sacha on 28-11-22.
 //
+#include <FL/Fl.H>
+#include <FL/fl_draw.H>
+#include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Box.H>
+
+#include "./shared/window_values.h"
 
 #ifndef F202_MAINWINDOW_H
 #define F202_MAINWINDOW_H

@@ -6,6 +6,11 @@
 #ifndef F202_PROJET_CELL_H
 #define F202_PROJET_CELL_H
 
+#include <FL/Fl.H>
+#include <FL/fl_draw.H>
+#include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Box.H>
+
 #include "../../shared/Point.h"
 
 

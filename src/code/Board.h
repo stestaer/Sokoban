@@ -10,7 +10,7 @@
 #include "shared/block_values.h"
 #include "shared/directions.h"
 #include "shared/Point.h"
-#include "Cell/Cell.h"
+#include "GUI/Cell/Cell.h"
 
 #ifndef F202_PROJET_BOARD_H
 #define F202_PROJET_BOARD_H
@@ -20,7 +20,7 @@ class Board {
     int w;
     int h;
     std::vector<std::vector<Cell>> cells;
-    std::vector<Cell *> targets(int x, int y);
+    //std::vector<Cell *> targets(int x, int y);
     Point player;
 
 
