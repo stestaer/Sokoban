@@ -19,8 +19,8 @@
 class Board {
     int w;
     int h;
-    std::vector<std::vector<int>> board;
-    std::vector<Point> targets;
+    std::vector<std::vector<Cell>> cells;
+    std::vector<Cell *> targets(int x, int y);
     Point player;
 
 

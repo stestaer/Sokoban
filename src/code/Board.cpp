@@ -18,7 +18,6 @@ void Board::updateBoard(const Point &base, const Point &movedTo)
     board[base.y][base.x] = CORRIDOR;
 }
 
-
 bool Board::isEmpty(const Point &target_position)
 {
     return board[target_position.y][target_position.x]==CORRIDOR;

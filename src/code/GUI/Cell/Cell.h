@@ -6,7 +6,7 @@
 #ifndef F202_PROJET_CELL_H
 #define F202_PROJET_CELL_H
 
-#include "../shared/Point.h"
+#include "../../shared/Point.h"
 
 
 class Cell {
