@@ -8,14 +8,9 @@
 #include <FL/Fl_Box.H>
 
 #include "Canvas.h"
-#include "Cell/Cell.h"
+#include "Cell.h"
 
 void Canvas::initialize()
-{
-
-}
-
-bool Canvas::solved()
 {
 
 }

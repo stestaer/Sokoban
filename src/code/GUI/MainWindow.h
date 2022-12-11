@@ -6,12 +6,14 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 
-#include "./shared/window_values.h"
+#include "../shared/window_values.h"
+#include "Canvas.h"
 
 #ifndef F202_MAINWINDOW_H
 #define F202_MAINWINDOW_H
 
 class MainWindow : public Fl_Window {
+    Board board;
     Canvas canvas;
 
 public:

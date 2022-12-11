@@ -11,7 +11,8 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 
-#include "../../shared/Point.h"
+#include "../shared/Point.h"
+#include "Rectangle.h"
 
 
 class Cell {
