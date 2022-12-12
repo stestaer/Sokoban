@@ -5,13 +5,13 @@
 #include "Crate.h"
 
 
-Crate::Crate(Point center, int w, int h)
+Crate::Crate(Point center, int w, int h, bool blocked)
 {
-    Crate(Point center, int w, int h)
-        : Cell(center, w, h), blocked{false}{};
+    Crate(Point center, int w, int h, bool blocked)
+        : Cell(center, w, h), blocked{false}{}
 }
 
-void Crate::draw() override
+void Crate::draw()
 {
     //TODO specific drawing of a crate
 }

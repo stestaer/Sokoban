@@ -5,6 +5,7 @@
 #ifndef PROJET_WALL_H
 #define PROJET_WALL_H
 
+#include "../shared/Point.h"
 #include "Cell.h"
 
 class Wall: public Cell {

@@ -1,19 +1,9 @@
 //
 // Created by sacha on 28-11-22.
 //
-
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
-#include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Box.H>
-
 #include "Canvas.h"
-#include "Cell.h"
 
-void Canvas::initialize()
-{
-
-}
+Canvas::Canvas(std::shared_ptr<Board> board): board{board}{}
 
 void Canvas::draw()
 {

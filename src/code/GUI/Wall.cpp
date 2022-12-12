@@ -10,7 +10,10 @@ Wall::Wall(Point center, int w, int h)
     : Cell(center, w, h), blocked{true}{};
 }
 
-void Wall::draw() override
+void Wall::draw()
 {
     //TODO specific drawing of a wall
+    r.setFillColor(FL_BLACK);
+    r.
+
 }
