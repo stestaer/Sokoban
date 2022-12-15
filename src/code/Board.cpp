@@ -24,11 +24,13 @@ void Board::changeTypes(Cell &c1, Cell&c2){
 }
 
 
-Bool Board::solved()
+bool Board::solved()
 {
-    for (auto const &t: targets) {
-
+    for (Point &t: targets) {
+        if (cells[t.y][t.x].getCellType() != Crate)
+            return false;
     }
+    return true;
 }
 
 Bool Board::allBlocked()
