@@ -8,3 +8,4 @@ SHARED = /
 
 main: main.cpp
 	g++ ${GUI} -o main ${LDFLAGS}
+

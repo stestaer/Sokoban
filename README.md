@@ -8,7 +8,7 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 >    Jeu dans lequel on contrôle un personnage se déplaçant sur des cases carrées, le but est de pousser ces boîtes sur des cases cibles.
 >*(voir ci_dessous)*
 
-![](/src/images/220px-Sokoban_ani.gif)
+![](/first%20try/srcst%20try/src/images/220px-Sokoban_ani.gif)
 
 ---
 ### Tâches de base

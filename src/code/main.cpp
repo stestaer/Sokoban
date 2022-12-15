@@ -16,15 +16,15 @@
 #include "Board.h"
 #include "GUI/MainWindow.h"
 
-//int main.o(){
-//    Board board{"../levels/level_1.txt"}; // add a path to load a matrix
-//    board.printBoard();
-//    return 0;
-//}
-
-int main(int argc, char *argv[]) {
-    srand(static_cast<unsigned>(time(nullptr)));
-    MainWindow window;
-    window.show(argc, argv);
-    return Fl::run();
+int main(){
+    Board board{"../levels/level_1.txt"}; // add a path to load a matrix
+    board.printBoard();
+    return 0;
 }
+
+//int main(int argc, char *argv[]) {
+//    srand(static_cast<unsigned>(time(nullptr)));
+//    MainWindow window;
+//    window.show(argc, argv);
+//    return Fl::run();
+//}

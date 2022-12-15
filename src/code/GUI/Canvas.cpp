@@ -12,9 +12,9 @@ void Canvas::draw()
             c->draw();
         }
     // We need to check to see if we need to draw game over or you win
-    if (bombExposed())
+    if (board->allBlocked())
         textGameOver.draw();
-    if (solved()) {
+    if (board->solved()) {
         textYouWin.draw();
     }
 }

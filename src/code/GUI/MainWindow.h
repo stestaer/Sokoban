@@ -17,7 +17,7 @@ class MainWindow : public Fl_Window {
     Canvas canvas;
 
 public:
-    MainWindow() : Fl_Window(500, 500, windowWidth, windowHeight, "Lab 3") {
+    MainWindow() : Fl_Window(500, 500, windowWidth, windowHeight, "Sokoban") {
         Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
         resizable(this);
     }
