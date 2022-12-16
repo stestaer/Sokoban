@@ -30,7 +30,7 @@ bool Board::solved()
         if (cells[t.y][t.x].getCellType() != Crate)
             return false;
     }
-    return false;
+    return true;
 }
 
 bool Board::allBlocked()
@@ -65,7 +65,7 @@ void Board::loadBoard(const std::string &text_file)
                     cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Crate));
                     break;
                 case Target: //TARGET //2
-                    targets.push_back(Point{i,j});
+                    targets.push_back(Point{i,j}); //TODO VOIR POUR LES POINTS
                     cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Corridor));
                 case Wall: //WALL //3
                     cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Wall));
