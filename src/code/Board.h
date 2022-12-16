@@ -37,6 +37,8 @@ public:
 
     bool allBlocked();
 
+    std::vector<std::vector<Cell>>& getCells();
+
     void loadBoard(const std::string &text_file);
 
     void printBoard(void);

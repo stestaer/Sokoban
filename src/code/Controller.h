@@ -3,6 +3,7 @@
 //
 #include "./shared/Point.h"
 #include "./shared/block_values.h"
+#include <memory>
 #include "Board.h"
 
 #ifndef F202_CONTROLLER_H
@@ -10,9 +11,11 @@
 
 
 class Controller {
-    shared_ptr<Board> board; //Model
+    std::shared_ptr<Board> board; //Model
 
 public:
+
+    void moveObject(Point &direction, Point &destination);
 
 
 };

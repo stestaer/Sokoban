@@ -1,7 +1,13 @@
 //
 // Created by sacha on 11-12-22.
 //
+#include <FL/Fl.H>
+#include <FL/fl_draw.H>
+#include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Box.H>
+
 #include <string>
+#include "../shared/Point.h"
 #ifndef F202_TEXT_H
 #define F202_TEXT_H
 

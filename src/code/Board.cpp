@@ -33,9 +33,15 @@ bool Board::solved()
     return true;
 }
 
-Bool Board::allBlocked()
+bool Board::allBlocked()
 {
+    //TODO faire
+    return false;
+}
 
+std::vector<std::vector<Cell>>& Board::getCells()
+{
+    return cells;
 }
 
 
@@ -59,7 +65,7 @@ void Board::loadBoard(const std::string &text_file)
                     break;
                 case Target: //TARGET //2
                     targets.push_back(Point{i,j});
-                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40), Target);
+                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40), Corridor);
                 case Wall: //WALL //3
                     cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Wall));
                     break;
@@ -76,8 +82,9 @@ void Board::loadBoard(const std::string &text_file)
     }
     input_file.close();
 }
-//TODO faire que le print marche du moins !!!
+
 void Board::printBoard(void)
+    //TODO faire que le print marche du moins !!!
 {
     for (int i = 0; i < h; i++)
     {

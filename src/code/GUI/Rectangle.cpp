@@ -15,6 +15,12 @@ void Rectangle::draw()
     fl_draw_box(FL_BORDER_FRAME, center.x-w/2, center.y-h/2, w, h, frameColor);
 }
 
+void Rectangle::setColor(Fl_Color newColor)
+{
+    fillColor=newColor;
+    frameColor=newColor;
+}
+
 void Rectangle::setFillColor(Fl_Color newFillColor)
 {
     fillColor = newFillColor;

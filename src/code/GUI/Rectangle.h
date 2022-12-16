@@ -7,6 +7,8 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 
+#include "../shared/Point.h"
+
 #ifndef F202_RECTANGLE_H
 #define F202_RECTANGLE_H
 
@@ -22,6 +24,8 @@ public:
               Fl_Color fillColor = FL_WHITE);
 
     void draw();
+
+    void setColor(Fl_Color newColor);
 
     void setFillColor(Fl_Color newFillColor);
 

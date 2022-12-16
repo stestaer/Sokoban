@@ -7,9 +7,9 @@ Canvas::Canvas(std::shared_ptr<Board> board): board{board}{}
 
 void Canvas::draw()
 {
-    for (auto &v: cells)
+    for (auto &v: board->getCells())
         for (auto &c: v) {
-            c->draw();
+            c.draw();
         }
     // We need to check to see if we need to draw game over or you win
     if (board->allBlocked())
@@ -18,3 +18,6 @@ void Canvas::draw()
         textYouWin.draw();
     }
 }
+
+void Canvas::mouseMove(Point mouseLoc)
+{}

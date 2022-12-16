@@ -19,19 +19,28 @@
 class Cell {
     Rectangle r;
     CellType cell_type;
+    bool blocked;
 public:
     // Constructor
-    Cell(Point center, int w, int h);
-
-    Cell(Point center, int w, int h, Fl_Color color);
-
+    Cell(Point center, int w, int h, CellType cell_type);
 
     virtual ~Cell();
 
-    CellType getCellType(){ return cell_type; };
-    void setCellType(CellType new_type){ cell_type = new_type; };
+    CellType getCellType();
+    void setCellType(CellType new_type);
     // Methods that draw and handle events
-    virtual void draw();
+
+    void corridorDraw();
+
+    void crateDraw();
+
+    void targetDraw(); //TODO faire une méthode dans canvas qui get les taregets du board et les dessine toutes AVANT LES CRATES SOIT AVANT LE SWITCH
+
+    //void wallDraw(); //default case in draw() switch;
+
+    void playerDraw();
+
+    void draw();
 
     void mouseMove(Point mouseLoc);
 

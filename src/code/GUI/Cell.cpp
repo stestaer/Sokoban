@@ -6,12 +6,64 @@
 
 
 Cell::Cell(Point center, int w, int h, CellType cell_type):
-        r(center, w, h, FL_WHITE, FL_WHITE), cell_type{cell_type} {}
+        r(center, w, h, FL_WHITE, FL_WHITE), cell_type{cell_type} {
+    if(cell_type == Wall){
+        r.setColor(wall_color);
+    }
+}
+
+void Cell::corridorDraw()
+{
+    r.setColor(corridor_color);
+    r.draw();
+}
+
+void Cell::crateDraw()
+{
+    r.setColor(crate_Color);
+    r.draw();
+}
+
+void Cell::targetDraw()
+{
+    this->corridorDraw();
+    //TODO faire un dessin de cible
+    // (2cercles supperposés de couleurs différentes)
+}
+
+//void Cell::wallDraw()
+//{
+//    r.draw();
+//}
+
+void Cell::playerDraw()
+{
+    r.setColor(corridor_color);
+    r.draw();
+    Point center = r.getCenter();
+    fl_color(player_color);
+    fl_begin_polygon();
+    fl_circle(center.x, center.y, player_radius);
+    fl_end_polygon();
+}
 
 
 void Cell::draw()
 {
-    r.draw();
+    switch (cell_type) {
+        case Corridor:
+            this->corridorDraw();
+            break;
+        case Crate:
+            this->crateDraw();
+            break;
+        case Player:
+            this->playerDraw();
+            break;
+        default:
+            r.draw();
+            break;
+    }
 }
 
 CellType Cell::getCellType(){ return cell_type; }
