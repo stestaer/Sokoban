@@ -14,7 +14,7 @@
 #include <iostream>
 
 #include "Board.h"
-#include "GUI/MainWindow.h"
+#include "MainWindow.h"
 
 int main(){
     Board board{"../levels/level_1.txt"}; // add a path to load a matrix

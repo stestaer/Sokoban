@@ -10,3 +10,6 @@ COMMON = *.cpp
 main: main.cpp
 	g++ ${GUI} ${SHARED} ${COMMON} -o main ${LDFLAGS}
 
+clean:
+	rm main
+

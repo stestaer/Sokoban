@@ -58,19 +58,19 @@ void Board::loadBoard(const std::string &text_file)
             input_file >> tmp;
             switch (tmp) {
                 case Corridor: //CORRIDOR //0
-                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40, Corridor));
+                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Corridor));
                     break;
                 case Crate: //CRATE //1
-                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40, Crate));
+                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Crate));
                     break;
                 case Target: //TARGET //2
                     targets.push_back(Point{i,j});
-                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40), Corridor);
+                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Corridor));
                 case Wall: //WALL //3
                     cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Wall));
                     break;
                 case Player: //PLAYER //4
-                    cells[i].push_back(Cell({50*i+25, 50*j+25},40,40), Player);
+                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Player));
                     player = {i,j};
                     break;
                 default:
@@ -90,7 +90,7 @@ void Board::printBoard(void)
     {
         for (int j = 0; j < w; j++)
         {
-            std::cout << cells[i][j] << " ";
+            std::cout << cells[i][j].getCellType() << " ";
         }
         std::cout << std::endl;
     }

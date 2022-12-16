@@ -15,6 +15,10 @@ class Controller {
 
 public:
 
+    Controller(std::shared_ptr<Board> board);
+
+    bool processEvent(int event);
+
     void moveObject(Point &direction, Point &destination);
 
 

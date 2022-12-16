@@ -24,7 +24,7 @@ public:
     // Constructor
     Cell(Point center, int w, int h, CellType cell_type);
 
-    virtual ~Cell();
+    ~Cell() = default;
 
     CellType getCellType();
     void setCellType(CellType new_type);
