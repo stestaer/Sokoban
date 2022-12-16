@@ -52,13 +52,13 @@ void Cell::draw()
 {
     switch (cell_type) {
         case Corridor:
-            this->corridorDraw();
+            corridorDraw();
             break;
         case Crate:
-            this->crateDraw();
+            crateDraw();
             break;
         case Player:
-            this->playerDraw();
+            playerDraw();
             break;
         default:
             r.draw();

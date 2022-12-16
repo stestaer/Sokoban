@@ -30,7 +30,7 @@ bool Board::solved()
         if (cells[t.y][t.x].getCellType() != Crate)
             return false;
     }
-    return true;
+    return false;
 }
 
 bool Board::allBlocked()
@@ -47,6 +47,7 @@ std::vector<std::vector<Cell>>& Board::getCells()
 
 void Board::loadBoard(const std::string &text_file)
 {
+    cells.clear();
     std::ifstream input_file(text_file);
     input_file >> h >> w;
     int tmp;

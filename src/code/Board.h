@@ -25,7 +25,7 @@ class Board {
 
 
 public:
-    Board(const std::string &level="");
+    Board(const std::string &level="../levels/level_1.txt");
 
     ~Board();
 

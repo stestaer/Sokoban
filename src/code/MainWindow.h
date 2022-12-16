@@ -6,6 +6,7 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 
+#include <string>
 #include "shared/window_values.h"
 #include "GUI/Canvas.h"
 #include "Controller.h"
