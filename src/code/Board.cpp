@@ -59,19 +59,19 @@ void Board::loadBoard(const std::string &text_file)
             input_file >> tmp;
             switch (tmp) {
                 case Corridor: //CORRIDOR //0
-                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Corridor));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
                     break;
                 case Crate: //CRATE //1
-                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Crate));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
                     break;
                 case Target: //TARGET //2
                     targets.push_back(Point{i,j}); //TODO VOIR POUR LES POINTS
-                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Corridor));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor)); // 40, 40 = taille des cellules
                 case Wall: //WALL //3
-                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Wall));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Wall));
                     break;
                 case Player: //PLAYER //4
-                    cells[i].push_back(Cell({50*i+25, 50*j+25}, 40, 40, Player));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
                     player = {i,j};
                     break;
                 default:
