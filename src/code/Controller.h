@@ -25,6 +25,8 @@ public:
 
     bool processEvent(int event);
 
+    void movePlayer(Point &direction);
+
     void moveObject(Point &direction, Point &destination);
 
 

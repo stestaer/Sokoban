@@ -19,12 +19,16 @@
 class Cell {
     Rectangle r;
     CellType cell_type;
-    bool blocked;
+    bool blocked=false;
 public:
     // Constructor
     Cell(Point center, int w, int h, CellType cell_type);
 
     ~Cell() = default;
+
+    bool isBlocked(){return blocked;};
+
+    void toggleBlocked(){blocked = !blocked;};
 
     CellType getCellType();
     void setCellType(CellType new_type);

@@ -4,22 +4,22 @@
 
 #include "Board.h"
 
-Board::Board(const std::string &level)
+Board::Board(const std::string &level): level{level}
 {
-    if(!level.empty())
-        loadBoard(level);
+    loadBoard(level);
+    //setBlockedState(); //TODO implémenter setBlockedState(), méthode qui rend les murs non-bougeables et
 }
 
 Board::~Board() {}
 
 int Board::getHeight()
 {
-    return h;
+    return rows;
 }
 
 int Board::getWidth()
 {
-    return w;
+    return cols;
 }
 
 Point Board::getPlayer()
@@ -45,7 +45,23 @@ bool Board::solved()
 
 bool Board::allBlocked()
 {
-    //TODO faire
+    for (std::vector<Cell> &v: cells)
+    {
+        for(Cell &c: v)
+        {
+            if(c.getCellType() == Crate && !c.isBlocked())
+                return false;
+        }
+    }
+    return true;
+}
+
+bool Board::checkMove(Point &direction)
+{
+    if( 0 < player.x+direction.x < cols &&
+        0 < player.y+direction.y < rows &&
+        !cells[player.y+direction.y][player.x+direction.x].isBlocked())
+        return true;
     return false;
 }
 
@@ -64,12 +80,12 @@ void Board::loadBoard(const std::string &text_file)
 {
     cells.clear();
     std::ifstream input_file(text_file);
-    input_file >> h >> w;
+    input_file >> rows >> cols;
     int tmp;
-    for (int i = 0; i < h; i++)
+    for (int i = 0; i < rows; i++)
     {
         cells.push_back(std::vector<Cell>());
-        for (int j = 0; j < w; j++)
+        for (int j = 0; j < cols; j++)
         {
             input_file >> tmp;
             switch (tmp) {
@@ -80,11 +96,12 @@ void Board::loadBoard(const std::string &text_file)
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
                     break;
                 case Target: //2
-                    targets.push_back(Point{i,j}); //TODO VOIR POUR LES POINTS
+                    targets.push_back(Point{i,j});
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
                     break;
                 case Wall: //3
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Wall));
+                    cells[i][j].toggleBlocked();
                     break;
                 case Player: //4
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
@@ -102,18 +119,22 @@ void Board::loadBoard(const std::string &text_file)
                     break;
 
             }
-            //cells[i].push_back(tmp);
         }
     }
     input_file.close();
 }
 
-void Board::printBoard(void)
-    //TODO faire que le print marche du moins !!!
+void Board::loadBoard()
 {
-    for (int i = 0; i < h; i++)
+    loadBoard(level);
+}
+
+void Board::printBoard(void)
+
+{
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < w; j++)
+        for (int j = 0; j < cols; j++)
         {
             std::cout << cells[i][j].getCellType() << " ";
         }
