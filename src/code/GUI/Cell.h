@@ -42,6 +42,8 @@ public:
 
     void draw();
 
+    void drawCrateOnTarget();
+
     void mouseMove(Point mouseLoc);
 
     void mouseClick(Point mouseLoc);

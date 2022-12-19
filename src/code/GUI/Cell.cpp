@@ -20,7 +20,8 @@ void Cell::corridorDraw()
 
 void Cell::crateDraw()
 {
-    r.setColor(crate_Color);
+    r.setFrameColor(FL_BLACK);
+    r.setFillColor(crate_Color);
     r.draw();
 }
 
@@ -29,6 +30,15 @@ void Cell::targetDraw()
     this->corridorDraw();
     //TODO faire un dessin de cible
     // (2cercles supperposés de couleurs différentes)
+    Point center = r.getCenter();
+    fl_color(FL_BLACK);
+    fl_begin_polygon();
+    fl_circle(center.x, center.y, player_radius/3+2);
+    fl_end_polygon();
+    fl_color(target_color);
+    fl_begin_polygon();
+    fl_circle(center.x, center.y, player_radius/3);
+    fl_end_polygon();
 }
 
 //void Cell::wallDraw()
@@ -64,6 +74,14 @@ void Cell::draw()
             r.draw();
             break;
     }
+
+}
+
+void Cell::drawCrateOnTarget()
+{
+    r.setFrameColor(FL_BLACK);
+    r.setFillColor(crate_on_target_color);
+    r.draw();
 }
 
 CellType Cell::getCellType(){ return cell_type; }

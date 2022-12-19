@@ -29,6 +29,10 @@ public:
 
     ~Board();
 
+    int getHeight();
+
+    int getWidth();
+
     Point getPlayer();
 
     void changeTypes(Cell &c1, Cell &c2);
@@ -38,6 +42,8 @@ public:
     bool allBlocked();
 
     std::vector<std::vector<Cell>>& getCells();
+
+    std::vector<Point>& getTargets();
 
     void loadBoard(const std::string &text_file);
 

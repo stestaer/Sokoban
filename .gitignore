@@ -1,3 +1,5 @@
 /tests/*.*
 .idea
 main
+/src/images/*.png
+/src/images/*.xpm

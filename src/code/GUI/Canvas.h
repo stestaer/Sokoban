@@ -24,6 +24,7 @@ class Canvas {
 
 public:
     Canvas(std::shared_ptr<Board> board);
+    void drawTargets();
     void draw();
     void mouseMove(Point mouseLoc);
     void mouseClick(Point mouseLoc);

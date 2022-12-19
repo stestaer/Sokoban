@@ -20,7 +20,7 @@ class MainWindow : public Fl_Window {
     Controller controller;
 
 public:
-    MainWindow() : Fl_Window(500, 500, windowWidth, windowHeight, "Sokoban"),
+    MainWindow() : Fl_Window(400, 400, windowWidth, windowHeight, "Sokoban"),
         board{std::make_shared<Board>()},
                    canvas(board),
                    controller(board){
