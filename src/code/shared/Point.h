@@ -2,6 +2,8 @@
 // Created by sacha on 10-11-22.
 //
 
+#include <iostream>
+
 #ifndef F202_PROJET_POINT_H
 #define F202_PROJET_POINT_H
 
@@ -13,6 +15,8 @@ public:
 
     int y;
     int x;
+
+    friend std::ostream& operator<<(std::ostream& os, const Point& p);
 
 };
 

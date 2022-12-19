@@ -27,6 +27,11 @@ Point Board::getPlayer()
     return player;
 }
 
+Cell& Board::getCell(Point cell)
+{
+    return cells[cell.y][cell.x];
+}
+
 void Board::changeTypes(Cell &c1, Cell&c2){
     CellType tmp = c1.getCellType();
     c1.setCellType(c2.getCellType());
@@ -56,7 +61,7 @@ bool Board::allBlocked()
     return true;
 }
 
-bool Board::checkMove(Point &direction)
+bool Board::checkPlayerMove(Point &direction)
 {
     if( 0 < player.x+direction.x < cols &&
         0 < player.y+direction.y < rows &&
@@ -101,7 +106,7 @@ void Board::loadBoard(const std::string &text_file)
                     break;
                 case Wall: //3
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Wall));
-                    cells[i][j].toggleBlocked();
+                    cells[i][j].setBlocked();
                     break;
                 case Player: //4
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Player));

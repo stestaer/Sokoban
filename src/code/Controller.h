@@ -9,6 +9,7 @@
 
 #include "./shared/Point.h"
 #include "./shared/block_values.h"
+#include <iostream>
 #include <memory>
 #include "Board.h"
 
@@ -27,7 +28,7 @@ public:
 
     void movePlayer(Point &direction);
 
-    void moveObject(Point &direction, Point &destination);
+    void moveObject(Point start, Point destination);
 
 
 };

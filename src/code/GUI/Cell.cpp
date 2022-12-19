@@ -28,8 +28,6 @@ void Cell::crateDraw()
 void Cell::targetDraw()
 {
     this->corridorDraw();
-    //TODO faire un dessin de cible
-    // (2cercles supperposés de couleurs différentes)
     Point center = r.getCenter();
     fl_color(FL_BLACK);
     fl_begin_polygon();
@@ -40,11 +38,6 @@ void Cell::targetDraw()
     fl_circle(center.x, center.y, player_radius/3);
     fl_end_polygon();
 }
-
-//void Cell::wallDraw()
-//{
-//    r.draw();
-//}
 
 void Cell::playerDraw()
 {

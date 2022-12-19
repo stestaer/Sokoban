@@ -28,7 +28,9 @@ public:
 
     bool isBlocked(){return blocked;};
 
-    void toggleBlocked(){blocked = !blocked;};
+    void setBlocked(){blocked = true;};
+
+    void setUnblocked(){blocked = false;};
 
     CellType getCellType();
     void setCellType(CellType new_type);

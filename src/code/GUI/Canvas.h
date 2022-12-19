@@ -19,8 +19,8 @@ class Canvas {
     std::shared_ptr<Board> board;
 
     Text textMenu{"Sacha Testaert", {250, 250}, 90, FL_BLACK};
-    Text textGameOver{"Game Over", {250, 250}, 90, fl_rgb_color(255, 0, 255)};
-    Text textYouWin{"You Win!", {250, 250}, 90, FL_GREEN};
+    Text textGameOver{"Game Over", {250, 250}, 90, FL_BLACK};
+    Text textYouWin{"You Win!", {250, 250}, 90, FL_BLACK};
 
 public:
     Canvas(std::shared_ptr<Board> board);

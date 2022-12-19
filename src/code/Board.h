@@ -19,6 +19,7 @@
 class Board {
     int rows;
     int cols;
+    bool finished = false;
     std::string level;
     std::vector<std::vector<Cell>> cells;
     std::vector<Point> targets;
@@ -36,6 +37,8 @@ public:
 
     Point getPlayer();
 
+    Cell& getCell(Point cell);
+
     void movePlayer(int x, int y){player.x += x;player.y += y;};
 
     void changeTypes(Cell &c1, Cell &c2);
@@ -44,7 +47,7 @@ public:
 
     bool allBlocked();
 
-    bool checkMove(Point &direction);
+    bool checkPlayerMove(Point &direction);
 
     std::vector<std::vector<Cell>>& getCells();
 
