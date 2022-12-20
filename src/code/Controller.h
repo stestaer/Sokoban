@@ -9,12 +9,13 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 #include <iostream>
-
-#include "./shared/Point.h"
-#include "./shared/block_values.h"
 #include <iostream>
 #include <memory>
+
 #include "Board.h"
+#include "./shared/Point.h"
+#include "./shared/directions.h"
+#include "./shared/block_values.h"
 
 
 
@@ -30,6 +31,11 @@ public:
     void movePlayer(Point &direction);
 
     void moveObject(Point start, Point destination);
+
+    void move();
+    //TODO faire une fonction appelée à chaque déplacement uqi lancera
+    // la procédure moveObject si jamais le joueur se trouve à bouger une caisse, cette méthode devra update le
+    //  statut de la caisse et checker si toutes les crates sont bloqquées
 
 
 };

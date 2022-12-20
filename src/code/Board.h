@@ -1,8 +1,8 @@
 //
 // Created by sacha on 10-11-22.
 //
-#ifndef F202_PROJET_BOARD_H
-#define F202_PROJET_BOARD_H
+#ifndef F202_BOARD_H
+#define F202_BOARD_H
 
 #include <vector>
 #include <string>
@@ -10,11 +10,11 @@
 #include <stdio.h>
 #include <fstream>
 
-#include "shared/block_values.h"
-#include "shared/levels.h"
-#include "shared/directions.h"
-#include "shared/Point.h"
 #include "GUI/Cell.h"
+#include "shared/levels.h"
+#include "shared/Point.h"
+#include "shared/directions.h"
+#include "shared/block_values.h"
 
 
 
@@ -70,4 +70,4 @@ public:
 };
 
 
-#endif //F202_PROJET_BOARD_H
+#endif //F202_BOARD_H

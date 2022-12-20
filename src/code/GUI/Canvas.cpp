@@ -30,9 +30,10 @@ void Canvas::draw()
         }
     drawTargets();
     // We need to check to see if we need to draw game over or you win
-    //TODO peut etre faire une méthode de controller pour cet affichage avec un booleen dans le bord en private
-    // qui indiquerait si le joueur serait encore autorisé à bouger sur le plateau(non quand jeu est win ou perdu)
-    if (board->allBlocked())
+    //TODO une méthode de controller pour cet affichage avec le gameState dans le bord en private
+    // qui indique si le joueur est encore autorisé à bouger sur le plateau(non quand jeu est win ou perdu)
+    //  car trop de calculs par seconde avec updateBlockedStatus()
+    if (board->updateBlockedStatus())
         textGameOver.draw();
     if (board->solved()) {
         textYouWin.draw();

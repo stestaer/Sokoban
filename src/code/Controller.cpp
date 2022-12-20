@@ -1,7 +1,6 @@
 //
 // Created by sacha on 11-12-22.
 //
-#include "./shared/directions.h"
 #include "Controller.h"
 
 

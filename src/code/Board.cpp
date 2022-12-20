@@ -7,7 +7,7 @@
 Board::Board(const std::string &level): level{level}
 {
     loadBoard(level);
-    //updateBlockedStatus(); //TODO implémenter setBlockedState(), méthode qui rend les murs non-bougeables et
+    updateBlockedStatus(); //TODO implémenter setBlockedState(), méthode qui rend les murs non-bougeables et
 }
 
 Board::~Board() {}

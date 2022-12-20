@@ -10,6 +10,7 @@
 #include <FL/Fl_Box.H>
 #include <memory>  // shared_ptr
 #include <vector>
+
 #include "Cell.h"
 #include "Text.h"
 #include "../Board.h"

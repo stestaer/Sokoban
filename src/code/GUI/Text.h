@@ -1,15 +1,15 @@
 //
 // Created by sacha on 11-12-22.
 // Text class took from Lab3
+#ifndef F202_TEXT_H
+#define F202_TEXT_H
+
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
-
-#ifndef F202_TEXT_H
-#define F202_TEXT_H
-
 #include <string>
+
 #include "../shared/Point.h"
 
 

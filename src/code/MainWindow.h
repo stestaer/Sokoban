@@ -13,6 +13,7 @@
 #include "shared/window_values.h"
 #include "GUI/Canvas.h"
 #include "Controller.h"
+#include "Board.h"
 
 
 class MainWindow : public Fl_Window {

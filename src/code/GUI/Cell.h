@@ -3,8 +3,8 @@
 //
 // Cell class mainly took from Lab3
 
-#ifndef F202_PROJET_CELL_H
-#define F202_PROJET_CELL_H
+#ifndef F202_CELL_H
+#define F202_CELL_H
 
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
@@ -55,4 +55,4 @@ public:
 };
 
 
-#endif //F202_PROJET_CELL_H
+#endif //F202_CELL_H

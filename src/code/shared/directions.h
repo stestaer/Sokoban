@@ -5,10 +5,10 @@
 
 #include "Point.h"
 
-Point RIGHT{0,1};
-Point LEFT{0,-1};
-Point UP{-1,0};
-Point DOWN{1,0};
+extern Point RIGHT;
+extern Point LEFT;
+extern Point UP;
+extern Point DOWN;
 
 //const std::vector<Point>DIRECTIONS{RIGHT,LEFT,UP,DOWN};
 

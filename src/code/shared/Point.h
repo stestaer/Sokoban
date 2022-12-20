@@ -1,8 +1,8 @@
 //
 // Created by sacha on 10-11-22.
 //
-#ifndef F202_PROJET_POINT_H
-#define F202_PROJET_POINT_H
+#ifndef F202_POINT_H
+#define F202_POINT_H
 
 #include <iostream>
 
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //F202_PROJET_POINT_H
+#endif //F202_POINT_H
