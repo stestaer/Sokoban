@@ -40,9 +40,7 @@ public:
 
     void crateDraw();
 
-    void targetDraw(); //TODO faire une méthode dans canvas qui get les taregets du board et les dessine toutes AVANT LES CRATES SOIT AVANT LE SWITCH
-
-    //void wallDraw(); //default case in draw() switch;
+    void targetDraw();
 
     void playerDraw();
 

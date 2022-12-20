@@ -1,6 +1,9 @@
 //
 // Created by sacha on 10-11-22.
 //
+#ifndef F202_PROJET_BOARD_H
+#define F202_PROJET_BOARD_H
+
 #include <vector>
 #include <string>
 #include <iostream>
@@ -9,21 +12,21 @@
 
 #include "shared/block_values.h"
 #include "shared/levels.h"
+#include "shared/directions.h"
 #include "shared/Point.h"
 #include "GUI/Cell.h"
 
-#ifndef F202_PROJET_BOARD_H
-#define F202_PROJET_BOARD_H
 
 
 class Board {
     int rows;
     int cols;
-    bool finished = false;
     std::string level;
     std::vector<std::vector<Cell>> cells;
+    std::vector<Point> crates;
     std::vector<Point> targets;
     Point player;
+    GameState gameState = Playing;
 
 
 public:
@@ -35,6 +38,8 @@ public:
 
     int getWidth();
 
+    GameState getState(){return gameState;};
+
     Point getPlayer();
 
     Cell& getCell(Point cell);
@@ -45,7 +50,11 @@ public:
 
     bool solved();
 
+    bool isBlocked(Point& position);
+
     bool allBlocked();
+
+    bool updateBlockedStatus();
 
     bool checkPlayerMove(Point &direction);
 

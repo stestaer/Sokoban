@@ -1,10 +1,10 @@
 //
 // Created by sacha on 19-12-22.
 //
-#include <string>
-
 #ifndef F202_LEVELS_H
 #define F202_LEVELS_H
+
+#include <string>
 
 
 struct levels{

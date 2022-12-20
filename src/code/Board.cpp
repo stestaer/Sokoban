@@ -7,7 +7,7 @@
 Board::Board(const std::string &level): level{level}
 {
     loadBoard(level);
-    //setBlockedState(); //TODO implémenter setBlockedState(), méthode qui rend les murs non-bougeables et
+    //updateBlockedStatus(); //TODO implémenter setBlockedState(), méthode qui rend les murs non-bougeables et
 }
 
 Board::~Board() {}
@@ -48,17 +48,46 @@ bool Board::solved()
     return true;
 }
 
+bool Board::isBlocked(Point& position)
+{
+    if ((getCell(position+UP).isBlocked() && getCell(position+LEFT).isBlocked() ) ||
+        (getCell(position+LEFT).isBlocked() && getCell(position+DOWN).isBlocked())||
+        (getCell(position+DOWN).isBlocked() && getCell(position+RIGHT).isBlocked())||
+        (getCell(position+RIGHT).isBlocked() && getCell(position+UP).isBlocked()))
+    {
+        getCell(position).setBlocked();
+        return true;
+    }
+    else
+    {
+        getCell(position).setUnblocked();
+        return false;
+    }
+}
+
 bool Board::allBlocked()
 {
-    for (std::vector<Cell> &v: cells)
+    for (Point &c: crates)
     {
-        for(Cell &c: v)
-        {
-            if(c.getCellType() == Crate && !c.isBlocked())
-                return false;
-        }
+        if(!isBlocked(c))
+            return false;
     }
     return true;
+}
+
+bool Board::updateBlockedStatus()
+{
+    crates.clear();
+    for (int y =0; y<rows; y++)
+    {
+        for (int x =0; x<rows; x++)
+        {
+            if (cells[y][x].getCellType() == Crate)
+                crates.push_back({y, x});
+        }
+    }
+
+   return allBlocked();
 }
 
 bool Board::checkPlayerMove(Point &direction)
@@ -84,6 +113,7 @@ std::vector<Point>& Board::getTargets()
 void Board::loadBoard(const std::string &text_file)
 {
     cells.clear();
+    crates.clear();
     std::ifstream input_file(text_file);
     input_file >> rows >> cols;
     int tmp;

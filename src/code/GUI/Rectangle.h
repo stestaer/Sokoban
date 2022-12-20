@@ -2,6 +2,9 @@
 // Created by sacha on 25-11-22.
 //
 // Rectangle class mainly took from Lab3
+#ifndef F202_RECTANGLE_H
+#define F202_RECTANGLE_H
+
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
 #include <FL/Fl_Double_Window.H>
@@ -9,8 +12,6 @@
 
 #include "../shared/Point.h"
 
-#ifndef F202_RECTANGLE_H
-#define F202_RECTANGLE_H
 
 
 class Rectangle {

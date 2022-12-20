@@ -1,6 +1,9 @@
 //
 // Created by sacha on 28-11-22.
 //
+#ifndef F202_CANVAS_H
+#define F202_CANVAS_H
+
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
 #include <FL/Fl_Double_Window.H>
@@ -11,8 +14,6 @@
 #include "Text.h"
 #include "../Board.h"
 
-#ifndef F202_CANVAS_H
-#define F202_CANVAS_H
 
 
 class Canvas {
