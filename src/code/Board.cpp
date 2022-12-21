@@ -81,7 +81,7 @@ bool Board::allBlocked()
     for (Point &c: crates)
     {
         if(!isBlocked(c))
-            return false;
+            return false; //TODO, peut etre possible d'utiliser le c.isBlocked() pour faire moins de checking sur le blocked
     }
     return true;
 }
