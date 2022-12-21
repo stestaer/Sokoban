@@ -10,6 +10,7 @@
 #include <FL/Fl_Box.H>
 
 #include <string>
+#include <unistd.h>
 #include "shared/window_values.h"
 #include "GUI/Canvas.h"
 #include "Controller.h"
@@ -29,11 +30,19 @@ public:
         Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
         resizable(this);
     }
+
     void draw() override
     {
         Fl_Window::draw();
+
+        GameState current_status = board->getState();
+        if (board->solved() || board->allBlocked())
+        {
+            board->loadBoard(); // make this loadNextBoard
+        }
         canvas.draw();
     }
+
     int handle(int event) override
     {
         return controller.processEvent(event);

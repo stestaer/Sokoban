@@ -11,7 +11,7 @@
 
 enum CellType { Corridor, Crate, Target, Wall, Player, CrateOnTarget, PlayerOnTarget };
 
-enum GameState { Lost, Won, Playing }; //TODO implémente ça tdc
+enum GameState { Lost, Won, Playing };
 
 const Fl_Color wall_color = fl_rgb_color(165,165,165);
 
