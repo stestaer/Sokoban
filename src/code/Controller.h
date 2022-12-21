@@ -32,7 +32,7 @@ public:
 
     void moveObject(Point start, Point destination);
 
-    void move();
+    //void move();
     //TODO faire une fonction appelée à chaque déplacement uqi lancera
     // la procédure moveObject si jamais le joueur se trouve à bouger une caisse, cette méthode devra update le
     //  statut de la caisse et checker si toutes les crates sont bloqquées

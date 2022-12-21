@@ -4,14 +4,16 @@
 #ifndef F202_BOARD_H
 #define F202_BOARD_H
 
-#include <vector>
-#include <string>
 #include <iostream>
-#include <stdio.h>
 #include <fstream>
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <map>
 
+#include "../levels/levels.h"
 #include "GUI/Cell.h"
-#include "shared/levels.h"
+#include "shared/levelstestfile.h"
 #include "shared/Point.h"
 #include "shared/directions.h"
 #include "shared/block_values.h"
@@ -21,6 +23,8 @@
 class Board {
     int rows;
     int cols;
+    int stepsRecord;
+    int currentSteps = 0;
     std::string level;
     std::vector<std::vector<Cell>> cells;
     std::vector<Point> crates;
@@ -38,13 +42,25 @@ public:
 
     int getWidth();
 
-    GameState getState(){return gameState;};
+    int getRecord(){ return stepsRecord; };
+
+    int getSteps(){ return currentSteps; };
+
+    void resetSteps() { currentSteps = 0; };
+
+    void addStep(){ currentSteps++; };
+
+    void saveSteps();
+
+    GameState getState(){ return gameState; };
+
+    void changeState(GameState newState){ gameState=newState; };
 
     Point getPlayer();
 
     Cell& getCell(Point cell);
 
-    void movePlayer(int x, int y){player.x += x;player.y += y;};
+    void movePlayer(Point &direction){player.x += direction.x;player.y += direction.y;};
 
     void changeTypes(Cell &c1, Cell &c2);
 

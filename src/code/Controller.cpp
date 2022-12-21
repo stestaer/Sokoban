@@ -11,6 +11,7 @@ void Controller::moveObject(Point start, Point destination)
     if (board->getCell(destination).getCellType() != Crate &&
         !board->getCell(destination).isBlocked())
         board->changeTypes(board->getCell(start), board->getCell(destination));
+    board->updateBlockedStatus();
     //TODO faire un c.setBlocked() si jamais la caisse est dans un coin
     //TODO faire une méthode d'actualisation de ce statut
     // (si deux caisses sont côtées à côtes de sorte à ce que l'une soit bloquée, une fois la bloquante bougée,
@@ -24,16 +25,21 @@ void Controller::movePlayer(Point &direction)
     {
         std::vector<std::vector<Cell>>& tmp = board->getCells();
         Point player_pos = board->getPlayer();
-        if (board->getCell({player_pos.y+direction.y, player_pos.x+direction.x}).getCellType() == Crate)
+        if (board->getCell(player_pos+direction).getCellType() == Crate)
         {
-            moveObject({board->getPlayer().y+direction.y, board->getPlayer().x+direction.x},
+            moveObject({player_pos+direction},
                        {player_pos.y+direction.y*2, player_pos.x+direction.x*2});
         }
-        Cell& c1 = tmp[player_pos.y][player_pos.x];
-        Cell& c2 = tmp[player_pos.y+direction.y][player_pos.x+direction.x];
-        board->changeTypes(c1, c2);
-        board->movePlayer(direction.x,direction.y);
-        std::cout<<board->getPlayer()<<std::endl;
+        Cell& c1 = board->getCell(player_pos);
+        Cell& c2 = board->getCell(player_pos+direction);
+        if (c2.getCellType() != Crate)
+        {
+            board->changeTypes(c1, c2);
+            board->movePlayer(direction);
+            board->addStep();
+            std::cout<<board->getPlayer()<<std::endl;
+        }
+
     }
 }
 
@@ -44,6 +50,7 @@ bool Controller::processEvent(int event)
             switch (Fl::event_key()) {
                 case 32: //board space bar
                     board->loadBoard();
+                    board->resetSteps();
                     return true;
                 case FL_Up: // 1 on keyboard
                     movePlayer(UP);

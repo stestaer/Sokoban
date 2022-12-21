@@ -27,12 +27,20 @@ Point Board::getPlayer()
     return player;
 }
 
+void Board::saveSteps()
+{
+    stepsRecord = std::min(stepsRecord, currentSteps);
+    std::ofstream record_file(LEVELS_DICT[level]);
+    record_file << stepsRecord;
+    record_file.close();
+}
+
 Cell& Board::getCell(Point cell)
 {
     return cells[cell.y][cell.x];
 }
 
-void Board::changeTypes(Cell &c1, Cell&c2){
+void Board::changeTypes(Cell &c1, Cell &c2){
     CellType tmp = c1.getCellType();
     c1.setCellType(c2.getCellType());
     c2.setCellType(tmp);
@@ -41,10 +49,13 @@ void Board::changeTypes(Cell &c1, Cell&c2){
 
 bool Board::solved()
 {
-    for (Point &t: targets) {
+    for (Point &t: targets)
+    {
         if (cells[t.y][t.x].getCellType() != Crate)
             return false;
     }
+    changeState(Won);
+    saveSteps();
     return true;
 }
 
@@ -86,15 +97,16 @@ bool Board::updateBlockedStatus()
                 crates.push_back({y, x});
         }
     }
-
-   return allBlocked();
+    if (allBlocked())
+        changeState(Lost);
+    return gameState == Lost;
 }
 
 bool Board::checkPlayerMove(Point &direction)
 {
     if( 0 < player.x+direction.x < cols &&
         0 < player.y+direction.y < rows &&
-        !cells[player.y+direction.y][player.x+direction.x].isBlocked())
+        !getCell(player+direction).isBlocked())
         return true;
     return false;
 }
@@ -114,15 +126,16 @@ void Board::loadBoard(const std::string &text_file)
 {
     cells.clear();
     crates.clear();
-    std::ifstream input_file(text_file);
-    input_file >> rows >> cols;
+    level = text_file;
+    std::ifstream level_file(level);
+    level_file >> rows >> cols;
     int tmp;
     for (int i = 0; i < rows; i++)
     {
         cells.push_back(std::vector<Cell>());
         for (int j = 0; j < cols; j++)
         {
-            input_file >> tmp;
+            level_file >> tmp;
             switch (tmp) {
                 case Corridor: //0
                     cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
@@ -156,7 +169,12 @@ void Board::loadBoard(const std::string &text_file)
             }
         }
     }
-    input_file.close();
+    level_file.close();
+
+    std::ifstream record_file(LEVELS_DICT[level]);
+    record_file >> stepsRecord;
+    std::cout << stepsRecord<< std::endl;
+    record_file.close();
 }
 
 void Board::loadBoard()
