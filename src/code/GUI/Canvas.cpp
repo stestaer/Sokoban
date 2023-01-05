@@ -31,31 +31,29 @@ void Canvas::draw()
             c.draw();
         }
     drawTargets();
-    stepsCounter.draw();
-    // We need to check to see if we need to draw game over or you win
-    //TODO une méthode de controller pour cet affichage avec le gameState dans le bord en private
-    // qui indique si le joueur est encore autorisé à bouger sur le plateau(non quand jeu est win ou perdu)
-    //  car trop de calculs par seconde avec updateBlockedStatus()
-    //if (board->updateBlockedStatus())
-    //    textGameOver.draw();
-    //if (board->solved()) {
-    //    textYouWin.draw();
-    //}
+    drawLevelInfos();
 }
 
-void Canvas::draw(GameState current_status)
-{
-    switch (current_status) {
-        case Won:
-            textYouWin.draw();
-            break;
-        case Lost:
-            textGameOver.draw();
-            break;
-        default:
-            break;
+//void Canvas::draw(GameState current_status)
+//{
+//    switch (current_status) {
+//        case Won:
+//            textYouWin.draw();
+//            break;
+//        case Lost:
+//            textGameOver.draw();
+//            break;
+//        default:
+//            break;
+//
+//    }
+//}
 
-    }
+void Canvas::drawLevelInfos()
+{
+    std::string steps_basis = "Steps : " + std::to_string(board->getSteps()) + "/" + std::to_string(board->getRecord());
+    Text steps = {steps_basis, {cell_width+cell_width/2, board->getWidth()*cell_width+cell_width/2}, 10, FL_BLACK};
+    steps.draw();
 }
 
 void Canvas::mouseMove(Point mouseLoc)

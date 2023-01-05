@@ -12,10 +12,6 @@ void Controller::moveObject(Point start, Point destination)
         !board->getCell(destination).isBlocked())
         board->changeTypes(board->getCell(start), board->getCell(destination));
     board->updateBlockedStatus();
-    //TODO faire un c.setBlocked() si jamais la caisse est dans un coin
-    //TODO faire une méthode d'actualisation de ce statut
-    // (si deux caisses sont côtées à côtes de sorte à ce que l'une soit bloquée, une fois la bloquante bougée,
-    //   celle bloquée pourrait redevenir non-bloquée)
 }
 
 
@@ -27,8 +23,8 @@ void Controller::movePlayer(Point &direction)
         Point player_pos = board->getPlayer();
         if (board->getCell(player_pos+direction).getCellType() == Crate)
         {
-            moveObject({player_pos+direction},
-                       {player_pos.y+direction.y*2, player_pos.x+direction.x*2});
+            moveObject(player_pos+direction,
+                       player_pos+direction+direction);
         }
         Cell& c1 = board->getCell(player_pos);
         Cell& c2 = board->getCell(player_pos+direction);
@@ -48,9 +44,9 @@ bool Controller::processEvent(int event)
     switch (event) {
         case FL_KEYDOWN:
             switch (Fl::event_key()) {
-                case 32: //board space bar
-                    board->loadBoard();
+                case 32: //board space bar //reset current level
                     board->resetSteps();
+                    board->loadBoard();
                     return true;
                 case FL_Up: // 1 on keyboard
                     movePlayer(UP);

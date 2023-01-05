@@ -24,13 +24,14 @@ class Board {
     int rows;
     int cols;
     int stepsRecord;
-    int currentSteps = 0;
+    int currentSteps;
     std::string level;
+    int lvl;
     std::vector<std::vector<Cell>> cells;
     std::vector<Point> crates;
     std::vector<Point> targets;
     Point player;
-    GameState gameState = Playing;
+    GameState gameState;
 
 
 public:
@@ -70,7 +71,7 @@ public:
 
     bool allBlocked();
 
-    bool updateBlockedStatus();
+    void updateBlockedStatus();
 
     bool checkPlayerMove(Point &direction);
 

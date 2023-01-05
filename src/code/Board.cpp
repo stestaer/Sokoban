@@ -29,7 +29,7 @@ Point Board::getPlayer()
 
 void Board::saveSteps()
 {
-    stepsRecord = std::min(stepsRecord, currentSteps);
+    stepsRecord = std::min(stepsRecord, currentSteps+1);
     std::ofstream record_file(LEVELS_DICT[level]);
     record_file << stepsRecord;
     record_file.close();
@@ -81,12 +81,12 @@ bool Board::allBlocked()
     for (Point &c: crates)
     {
         if(!isBlocked(c))
-            return false; //TODO, peut etre possible d'utiliser le c.isBlocked() pour faire moins de checking sur le blocked
+            return false;
     }
     return true;
 }
 
-bool Board::updateBlockedStatus()
+void Board::updateBlockedStatus()
 {
     crates.clear();
     for (int y =0; y<rows; y++)
@@ -98,8 +98,16 @@ bool Board::updateBlockedStatus()
         }
     }
     if (allBlocked())
+    {
         changeState(Lost);
-    return gameState == Lost;
+    }
+    else if(solved())
+    {
+        changeState(Won);
+    }
+    else
+    {}
+
 }
 
 bool Board::checkPlayerMove(Point &direction)
@@ -138,30 +146,30 @@ void Board::loadBoard(const std::string &text_file)
             level_file >> tmp;
             switch (tmp) {
                 case Corridor: //0
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
                     break;
                 case Crate: //1
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
                     break;
                 case Target: //2
                     targets.push_back(Point{i,j});
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Corridor));
                     break;
                 case Wall: //3
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Wall));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Wall));
                     cells[i][j].setBlocked();
                     break;
                 case Player: //4
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
                     player = {i,j};
                     break;
                 case CrateOnTarget: //5
                     targets.push_back(Point{i,j});
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Crate));
                     break;
                 case PlayerOnTarget: //6
                     targets.push_back(Point{i,j});
-                    cells[i].push_back(Cell({cell_width*i+cell_width/2, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
+                    cells[i].push_back(Cell({cell_width*i+cell_width/2+y_gap, cell_width*j+cell_width/2}, cell_width, cell_width, Player));
                     break;
                 default:
                     break;
@@ -170,11 +178,13 @@ void Board::loadBoard(const std::string &text_file)
         }
     }
     level_file.close();
+    gameState = Playing;
 
     std::ifstream record_file(LEVELS_DICT[level]);
     record_file >> stepsRecord;
     std::cout << stepsRecord<< std::endl;
     record_file.close();
+    currentSteps = 0;
 }
 
 void Board::loadBoard()

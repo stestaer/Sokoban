@@ -23,6 +23,7 @@ class MainWindow : public Fl_Window {
     Controller controller;
 
 public:
+
     MainWindow() : Fl_Window(400, 400, windowWidth, windowHeight, "Sokoban"),
         board{std::make_shared<Board>()},
                    canvas(board),
@@ -36,7 +37,7 @@ public:
         Fl_Window::draw();
 
         GameState current_status = board->getState();
-        if (board->solved() || board->allBlocked())
+        if (current_status == Won)
         {
             board->loadBoard(); // make this loadNextBoard
         }

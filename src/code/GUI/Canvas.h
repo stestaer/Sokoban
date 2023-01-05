@@ -21,17 +21,18 @@
 
 class Canvas {
     std::shared_ptr<Board> board;
-
     Text textMenu{"Sacha Testaert", {250, 250}, 90, FL_BLACK};
     Text textGameOver{"Game Over", {250, 250}, 90, FL_BLACK};
     Text textYouWin{"You Win!", {250, 250}, 90, FL_BLACK};
-    Text stepsCounter{"Steps :  "+std::to_string(board->getSteps())+" / "+std::to_string(board->getRecord()), {cell_width+cell_width/2, board->getWidth()*cell_width+cell_width/2}, 10, FL_BLACK};
+    //Text steps{"Steps :", {cell_width+cell_width/2, board->getWidth()*cell_width+cell_width/2}, 10, FL_BLACK};
+
 
 public:
     Canvas(std::shared_ptr<Board> board);
     void drawTargets();
     void draw();
-    void draw(GameState current_status);
+    //void draw(GameState current_status);
+    void drawLevelInfos();
     void mouseMove(Point mouseLoc);
     void mouseClick(Point mouseLoc);
     void keyPressed(int keyCode);
