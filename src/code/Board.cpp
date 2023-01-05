@@ -30,7 +30,7 @@ Point Board::getPlayer()
 void Board::saveSteps()
 {
     stepsRecord = std::min(stepsRecord, currentSteps+1);
-    std::ofstream record_file(LEVELS_DICT[level]);
+    std::ofstream record_file(LEVELS[getLevel()].second);
     record_file << stepsRecord;
     record_file.close();
 }
@@ -134,8 +134,7 @@ void Board::loadBoard(const std::string &text_file)
 {
     cells.clear();
     crates.clear();
-    level = text_file;
-    std::ifstream level_file(level);
+    std::ifstream level_file(LEVELS[getLevel()].first);
     level_file >> rows >> cols;
     int tmp;
     for (int i = 0; i < rows; i++)
@@ -180,16 +179,17 @@ void Board::loadBoard(const std::string &text_file)
     level_file.close();
     gameState = Playing;
 
-    std::ifstream record_file(LEVELS_DICT[level]);
+    std::ifstream record_file(LEVELS[getLevel()].second);
     record_file >> stepsRecord;
     std::cout << stepsRecord<< std::endl;
     record_file.close();
     currentSteps = 0;
 }
 
-void Board::loadBoard()
+void Board::loadBoard(int level)
 {
-    loadBoard(level);
+    lvl = level;
+    loadBoard(LEVELS[lvl].first);
 }
 
 void Board::printBoard(void)

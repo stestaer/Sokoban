@@ -11,6 +11,7 @@
 #include <memory>  // shared_ptr
 #include <vector>
 #include <string>
+#include <limits>
 
 #include "Cell.h"
 #include "Text.h"

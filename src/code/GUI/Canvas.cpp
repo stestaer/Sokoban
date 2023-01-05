@@ -34,26 +34,23 @@ void Canvas::draw()
     drawLevelInfos();
 }
 
-//void Canvas::draw(GameState current_status)
-//{
-//    switch (current_status) {
-//        case Won:
-//            textYouWin.draw();
-//            break;
-//        case Lost:
-//            textGameOver.draw();
-//            break;
-//        default:
-//            break;
-//
-//    }
-//}
 
 void Canvas::drawLevelInfos()
 {
-    std::string steps_basis = "Steps : " + std::to_string(board->getSteps()) + "/" + std::to_string(board->getRecord());
+    std::string current_record;
+    if (board->getRecord()==std::numeric_limits<int>::max())
+    {
+        current_record = "NA";
+    }
+    else
+    {
+        current_record = std::to_string(board->getRecord());
+    }
+    std::string steps_basis = "Steps : " + std::to_string(board->getSteps()) + "/" + current_record;
     Text steps = {steps_basis, {cell_width+cell_width/2, board->getWidth()*cell_width+cell_width/2}, 10, FL_BLACK};
     steps.draw();
+
+
 }
 
 void Canvas::mouseMove(Point mouseLoc)

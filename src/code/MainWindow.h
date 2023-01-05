@@ -12,6 +12,7 @@
 #include <string>
 #include <unistd.h>
 #include "shared/window_values.h"
+#include "../levels/levels.h"
 #include "GUI/Canvas.h"
 #include "Controller.h"
 #include "Board.h"
@@ -39,7 +40,8 @@ public:
         GameState current_status = board->getState();
         if (current_status == Won)
         {
-            board->loadBoard(); // make this loadNextBoard
+            if (board->getLevel() + 1 <=  LEVELS.size()-1)
+                board->loadBoard(board->getLevel()+1);
         }
         canvas.draw();
     }

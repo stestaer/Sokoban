@@ -13,7 +13,7 @@
 
 #include "../levels/levels.h"
 #include "GUI/Cell.h"
-#include "shared/levelstestfile.h"
+#include <limits>
 #include "shared/Point.h"
 #include "shared/directions.h"
 #include "shared/block_values.h"
@@ -23,10 +23,10 @@
 class Board {
     int rows;
     int cols;
-    int stepsRecord;
+    int stepsRecord = std::numeric_limits<int>::max();
     int currentSteps;
     std::string level;
-    int lvl;
+    int lvl = 0;
     std::vector<std::vector<Cell>> cells;
     std::vector<Point> crates;
     std::vector<Point> targets;
@@ -38,6 +38,8 @@ public:
     Board(const std::string &level="../levels/level_1.txt");
 
     ~Board();
+
+    int getLevel(){ return lvl; };
 
     int getHeight();
 
@@ -81,7 +83,7 @@ public:
 
     void loadBoard(const std::string &text_file);
 
-    void loadBoard();
+    void loadBoard(int level = getLevel() ); //TODO FIX THIS WHEN COMPILING
 
     void printBoard(void);
 };
