@@ -22,6 +22,7 @@ class MainWindow : public Fl_Window {
     std::shared_ptr<Board> board;
     Canvas canvas;
     Controller controller;
+    int waitingScreen_frames = 60;
 
 public:
 
@@ -31,19 +32,40 @@ public:
                    controller(board){
         Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
         resizable(this);
+        Fl_Window::resize(Fl_Window::x_root(), Fl_Window::y_root(), board->getWidth()*cell_width+2*cell_width, board->getHeight()*cell_width+cell_width);
     }
 
     void draw() override
     {
         Fl_Window::draw();
-
-        GameState current_status = board->getState();
-        if (current_status == Won)
+        if (waitingScreen_frames != 0)
         {
-            if (board->getLevel() + 1 <=  LEVELS.size()-1)
-                board->loadBoard(board->getLevel()+1);
+            canvas.drawWaitingScreen(Fl_Window::x_root(), Fl_Window::y_root());
+            waitingScreen_frames--;
         }
-        canvas.draw();
+        else
+        {
+            GameState current_status = board->getState();
+            if (current_status == Won)
+            {
+                if (board->getLevel() < LEVELS.size()-1)
+                {
+                    board->loadBoard(board->getLevel()+1);
+                }
+                else if (board->getLevel() == LEVELS.size()-1)
+                {
+                    board->loadBoard();
+                }
+                Fl_Window::resize(Fl_Window::x_root(), Fl_Window::y_root(), board->getWidth()*cell_width+2*cell_width, board->getHeight()*cell_width+cell_width);
+
+            }
+            if (current_status == Lost)
+                board->loadBoard(board->getLevel());
+            if (controller.mustResize())
+                Fl_Window::resize(Fl_Window::x_root(), Fl_Window::y_root(), board->getWidth()*cell_width+2*cell_width, board->getHeight()*cell_width+cell_width);
+
+            canvas.draw();
+        }
     }
 
     int handle(int event) override

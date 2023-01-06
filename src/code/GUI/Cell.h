@@ -33,6 +33,7 @@ public:
     void setUnblocked(){blocked = false;};
 
     CellType getCellType();
+
     void setCellType(CellType new_type);
     // Methods that draw and handle events
 

@@ -22,6 +22,14 @@ int Board::getWidth()
     return cols;
 }
 
+void Board::resetRecord()
+{
+    stepsRecord = std::numeric_limits<int>::max();
+    std::ofstream record_file(LEVELS[getLevel()].second);
+    record_file << stepsRecord;
+    record_file.close();
+}
+
 Point Board::getPlayer()
 {
     return player;
@@ -61,10 +69,10 @@ bool Board::solved()
 
 bool Board::isBlocked(Point& position)
 {
-    if ((getCell(position+UP).isBlocked() && getCell(position+LEFT).isBlocked() ) ||
-        (getCell(position+LEFT).isBlocked() && getCell(position+DOWN).isBlocked())||
-        (getCell(position+DOWN).isBlocked() && getCell(position+RIGHT).isBlocked())||
-        (getCell(position+RIGHT).isBlocked() && getCell(position+UP).isBlocked()))
+    if (((getCell(position+UP).isBlocked() || getCell(position+UP).getCellType() == Crate) && (getCell(position+LEFT).isBlocked() || getCell(position+LEFT).getCellType() == Crate)) ||
+        ((getCell(position+LEFT).isBlocked() || getCell(position+LEFT).getCellType() == Crate) && (getCell(position+DOWN).isBlocked() || getCell(position+DOWN).getCellType() == Crate)) ||
+        ((getCell(position+DOWN).isBlocked() || getCell(position+DOWN).getCellType() == Crate) && (getCell(position+RIGHT).isBlocked() || getCell(position+RIGHT).getCellType() == Crate)) ||
+        ((getCell(position+RIGHT).isBlocked() || getCell(position+RIGHT).getCellType() == Crate) && (getCell(position+UP).isBlocked() || getCell(position+UP).getCellType() == Crate)))
     {
         getCell(position).setBlocked();
         return true;
@@ -97,13 +105,13 @@ void Board::updateBlockedStatus()
                 crates.push_back({y, x});
         }
     }
-    if (allBlocked())
-    {
-        changeState(Lost);
-    }
-    else if(solved())
+    if(solved())
     {
         changeState(Won);
+    }
+    else if (allBlocked())
+    {
+        changeState(Lost);
     }
     else
     {}
@@ -133,8 +141,9 @@ std::vector<Point>& Board::getTargets()
 void Board::loadBoard(const std::string &text_file)
 {
     cells.clear();
+    targets.clear();
     crates.clear();
-    std::ifstream level_file(LEVELS[getLevel()].first);
+    std::ifstream level_file(text_file);
     level_file >> rows >> cols;
     int tmp;
     for (int i = 0; i < rows; i++)
@@ -181,14 +190,14 @@ void Board::loadBoard(const std::string &text_file)
 
     std::ifstream record_file(LEVELS[getLevel()].second);
     record_file >> stepsRecord;
-    std::cout << stepsRecord<< std::endl;
     record_file.close();
     currentSteps = 0;
 }
 
-void Board::loadBoard(int level)
+void Board::loadBoard(int desired_level)
 {
-    lvl = level;
+    if (desired_level != None && desired_level >= 0 && desired_level < LEVELS.size() || desired_level == 0)
+        lvl = desired_level;
     loadBoard(LEVELS[lvl].first);
 }
 

@@ -51,6 +51,8 @@ public:
 
     void resetSteps() { currentSteps = 0; };
 
+    void resetRecord();
+
     void addStep(){ currentSteps++; };
 
     void saveSteps();
@@ -83,7 +85,7 @@ public:
 
     void loadBoard(const std::string &text_file);
 
-    void loadBoard(int level = getLevel() ); //TODO FIX THIS WHEN COMPILING
+    void loadBoard(int desired_level = None );
 
     void printBoard(void);
 };

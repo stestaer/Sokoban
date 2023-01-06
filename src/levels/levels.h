@@ -10,7 +10,6 @@
 #include <string>
 #include <map>
 
-extern std::map<std::string, std::string> LEVELS_DICT;
 extern std::vector< std::pair< std::string, std::string >> LEVELS;
 
 #endif //F202_LEVELS_H

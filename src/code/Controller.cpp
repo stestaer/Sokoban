@@ -6,6 +6,12 @@
 
 Controller::Controller(std::shared_ptr<Board> board) : board{board} {}
 
+void Controller::changeLevel(int desired_level)
+{
+        board->loadBoard(desired_level);
+}
+
+
 void Controller::moveObject(Point start, Point destination)
 {
     if (board->getCell(destination).getCellType() != Crate &&
@@ -33,7 +39,6 @@ void Controller::movePlayer(Point &direction)
             board->changeTypes(c1, c2);
             board->movePlayer(direction);
             board->addStep();
-            std::cout<<board->getPlayer()<<std::endl;
         }
 
     }
@@ -44,11 +49,11 @@ bool Controller::processEvent(int event)
     switch (event) {
         case FL_KEYDOWN:
             switch (Fl::event_key()) {
-                case 32: //board space bar //reset current level
+                case 32: //space bar resets current level
                     board->resetSteps();
-                    board->loadBoard();
+                    board->loadBoard(board->getLevel());
                     return true;
-                case FL_Up: // 1 on keyboard
+                case FL_Up:
                     movePlayer(UP);
                     return true;
                 case FL_Down:
@@ -60,9 +65,21 @@ bool Controller::processEvent(int event)
                 case FL_Right:
                     movePlayer(RIGHT);
                     return true;
-                case 'h':
-                    break;
-                case 'l': // l
+                case 'r':
+                    board->resetRecord();
+                    return true;
+                case 'u':
+                    board->updateBlockedStatus();
+                    return true;
+                case 'b':
+                    changeLevel(board->getLevel()-1);
+                    do_resize = true;
+                    return true;
+                case 'n':
+                    changeLevel(board->getLevel()+1);
+                    do_resize = true;
+                    return true;
+                case 'l':
                     exit(0);
                 default:
                     return false;

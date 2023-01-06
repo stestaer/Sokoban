@@ -21,22 +21,21 @@
 
 class Controller {
     std::shared_ptr<Board> board; //Model
+    bool do_resize = false;
 
 public:
 
-    Controller(std::shared_ptr<Board> board);
+    explicit Controller(std::shared_ptr<Board> board);
+
+    void changeLevel(int desired_level=None);
 
     bool processEvent(int event);
+
+    bool mustResize(){ return do_resize; };
 
     void movePlayer(Point &direction);
 
     void moveObject(Point start, Point destination);
-
-    //void move();
-    //TODO faire une fonction appelée à chaque déplacement uqi lancera
-    // la procédure moveObject si jamais le joueur se trouve à bouger une caisse, cette méthode devra update le
-    //  statut de la caisse et checker si toutes les crates sont bloqquées
-
 
 };
 

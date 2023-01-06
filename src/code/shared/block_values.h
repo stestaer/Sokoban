@@ -26,7 +26,7 @@ const Fl_Color crate_on_target_color = fl_rgb_color(184, 134, 11);
 const Fl_Color target_color = fl_rgb_color(253, 253, 150);
 
 
-const int cell_width = 40;
+const int cell_width = 50;
 
 const int y_gap = cell_width;
 
