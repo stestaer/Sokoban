@@ -7,7 +7,7 @@ Canvas::Canvas(std::shared_ptr<Board> board): board{board}{}
 
 void Canvas::drawWaitingScreen(int x, int y)
 {
-    Text textMenu{"Sacha Testaert", {y/2, x/2}, 45, FL_BLACK};
+    Text textMenu{"Sacha Testaert", {y/2, x/2}, 30, FL_BLACK};
     textMenu.draw();
 }
 

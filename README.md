@@ -8,16 +8,16 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 >    Jeu dans lequel on contrôle un personnage se déplaçant sur des cases carrées, le but est de pousser ces boîtes sur des cases cibles.
 >*(voir ci_dessous)*
 
-![](/first%20try/srcst%20try/src/images/220px-Sokoban_ani.gif)
+![](./images/220px-Sokoban_ani.gif)
 
 ---
 ### Tâches de base
 
-- [ ] un personnage contrôlé au clavier qui peut se déplacer dans 4 direction sur un plateau de cases
-- [ ] des murs infranchissables
-- [ ] des éléments (boîtes dans le jeu original) que le personnage peut pousser
-- [ ] des cases cibles sur lesquels le joueur doit mettre les boîtes
-- [ ] un moyen de réinitialiser le niveau, que ce soit un bouton à cliquer ou une touche du clavier
+- [X] un personnage contrôlé au clavier qui peut se déplacer dans 4 direction sur un plateau de cases
+- [X] des murs infranchissables
+- [X] des éléments (boîtes dans le jeu original) que le personnage peut pousser
+- [X] des cases cibles sur lesquels le joueur doit mettre les boîtes
+- [X] un moyen de réinitialiser le niveau, que ce soit un bouton à cliquer ou une touche du clavier
 
 ### Tâches supplémentaires
 
@@ -35,18 +35,18 @@ couleur
 - [ ] **Boîtes légères.** Ajoutez des boîtes légères. Le joueur doit pouvoir pousser plusieurs
 boîtes légères en même temps si elles se trouvent l’une derrière l’autre.
 
-- [ ] **Compteur de pas.** Ajoutez un élément sur l’écran, qui indique au joueur combien de
+- [X] **Compteur de pas.** Ajoutez un élément sur l’écran, qui indique au joueur combien de
 pas il a effectué jusqu’à présent sur le niveau.
 
-- [ ] **Meilleur score de pas.** Affichez quelque part le score de pas le plus bas obtenu par le
+- [X] **Meilleur score de pas.** Affichez quelque part le score de pas le plus bas obtenu par le
 joueur pour chaque niveau. Ce score doit être enregistré et persister à la fermeture du
 programme. Il faut aussi pouvoir le réinitialiser.
 
-- [ ] **Écran d’accueil.** Lorsque vous démarrez le jeu, un écran d’accueil apparaît pendant
+- [X] **Écran d’accueil.** Lorsque vous démarrez le jeu, un écran d’accueil apparaît pendant
 une seconde avant que l’écran principal du jeu ne s’affiche. L’écran d’accueil doit inclure
 votre nom.
 
-- [ ] **Niveaux et sélection de niveau.** Implémentez différents niveaux que vous enregistrez
+- [X] **Niveaux et sélection de niveau.** Implémentez différents niveaux que vous enregistrez
 dans un ou plusieurs fichiers. Vous devez y retenir l’emplacement des murs, des différents élements du jeu implémentés (boîtes colorées ou non, teleporteurs, cibles) et la position de départ du joueur. Il vous faut ensuite un écran de sélection de niveau et un moyen d’y accéder depuis le menu principal. L’écran de sélection de niveau peut être simple.
 
 - [ ] **Limite de pas.** Ajoutez une limite de pas maximum sur certains niveaux (cette tâche
@@ -62,6 +62,6 @@ parvenir sans déplacer de boites.
 interactive au lieu d’y jouer. Vous devriez pouvoir enregistrer les modifications et ajouter
 de nouveaux niveaux.
 
-- [ ] **Détection d’échec.** Une boîte qui se trouve dans un coin formé par des murs est bloquée : le joueur ne peut plus la déplacer. Une boîte qui se trouve dans un coin formé par
+- [X] **Détection d’échec.** Une boîte qui se trouve dans un coin formé par des murs est bloquée : le joueur ne peut plus la déplacer. Une boîte qui se trouve dans un coin formé par
 des boîtes bloquées et/ou des murs et aussi bloquée. Si toutes les boîtes sont bloquées
 alors un message d’échec apparaît avec un bouton pour recommencer la partie.

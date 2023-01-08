@@ -1,5 +1,6 @@
-/tests/*.*
 .idea
-main
-/src/images/*.png
-/src/images/*.xpm
+./images/*.png
+./images/*.xpm
+/images
+/src/*.o
+/src/*/*.o

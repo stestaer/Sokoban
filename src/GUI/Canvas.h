@@ -18,7 +18,7 @@
 #include "Text.h"
 #include "../shared/block_values.h"
 #include "../shared/window_values.h"
-#include "../Board.h"
+#include "../model/Board.h"
 
 
 

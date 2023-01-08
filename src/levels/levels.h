@@ -8,7 +8,6 @@
 #include <utility>
 #include <vector>
 #include <string>
-#include <map>
 
 extern std::vector< std::pair< std::string, std::string >> LEVELS;
 

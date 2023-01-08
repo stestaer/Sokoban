@@ -12,15 +12,15 @@
 #include <iostream>
 #include <memory>
 
-#include "Board.h"
-#include "./shared/Point.h"
-#include "./shared/directions.h"
-#include "./shared/block_values.h"
+#include "../model/Board.h"
+#include "../shared/Point.h"
+#include "../shared/directions.h"
+#include "../shared/block_values.h"
 
 
 
 class Controller {
-    std::shared_ptr<Board> board; //Model
+    std::shared_ptr<Board> board;
     bool do_resize = false;
 
 public:

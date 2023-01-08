@@ -35,7 +35,6 @@ public:
     CellType getCellType();
 
     void setCellType(CellType new_type);
-    // Methods that draw and handle events
 
     void corridorDraw();
 

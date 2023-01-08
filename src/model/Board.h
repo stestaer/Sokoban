@@ -9,14 +9,13 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include <map>
+#include <limits>
 
 #include "../levels/levels.h"
-#include "GUI/Cell.h"
-#include <limits>
-#include "shared/Point.h"
-#include "shared/directions.h"
-#include "shared/block_values.h"
+#include "../GUI/Cell.h"
+#include "../shared/Point.h"
+#include "../shared/directions.h"
+#include "../shared/block_values.h"
 
 
 
@@ -35,7 +34,7 @@ class Board {
 
 
 public:
-    Board(const std::string &level="../levels/level_1.txt");
+    Board(const std::string &level="src/levels/level_1.txt");
 
     ~Board();
 

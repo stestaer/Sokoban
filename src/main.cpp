@@ -13,14 +13,9 @@
 #include <vector>
 #include <iostream>
 
-#include "Board.h"
+/**#include "Board.h"**/
 #include "MainWindow.h"
 
-//int main(){
-//    Board board{"../levels/level_1.txt"}; // add a path to load a matrix
-//    board.printBoard();
-//    return 0;
-//}
 
 int main(int argc, char *argv[]) {
     MainWindow window;

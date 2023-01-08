@@ -12,10 +12,10 @@
 #include <string>
 #include <unistd.h>
 #include "shared/window_values.h"
-#include "../levels/levels.h"
+#include "levels/levels.h"
 #include "GUI/Canvas.h"
-#include "Controller.h"
-#include "Board.h"
+#include "controller/Controller.h"
+#include "model/Board.h"
 
 
 class MainWindow : public Fl_Window {
