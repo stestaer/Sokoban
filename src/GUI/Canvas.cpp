@@ -58,6 +58,3 @@ void Canvas::drawLevelInfos()
 
 
 }
-
-void Canvas::mouseMove(Point mouseLoc)
-{}

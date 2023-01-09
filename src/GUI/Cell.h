@@ -32,6 +32,10 @@ public:
 
     void setUnblocked(){blocked = false;};
 
+    /**
+     * cell_type from enum CellType in ../shared/block_values.h
+     * @return cell_type
+     */
     CellType getCellType();
 
     void setCellType(CellType new_type);
@@ -44,6 +48,10 @@ public:
 
     void playerDraw();
 
+    /**
+     * Calls specific "drawMethod" method for each cell
+     * depending of its type
+     */
     void draw();
 
     void drawCrateOnTarget();

@@ -62,6 +62,10 @@ public:
         return h;
     }
 
+    /**
+     * @param p
+     * @return true if mouseLocation sits in rectangle of the cell (cell.r)
+     */
     bool contains(Point p);
 
     Point getCenter()

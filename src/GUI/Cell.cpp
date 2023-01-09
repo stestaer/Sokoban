@@ -89,7 +89,3 @@ void Cell::mouseMove(Point mouseLoc)
         r.setFrameColor(r.getFillColor());
     }
 }
-
-void Cell::mouseClick(Point mouseLoc) {
-
-}

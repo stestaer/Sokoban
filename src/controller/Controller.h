@@ -25,16 +25,39 @@ class Controller {
 
 public:
 
-    explicit Controller(std::shared_ptr<Board> board);
+    Controller(std::shared_ptr<Board> board);
 
+    /**
+     * change to a particular level
+     * @param desired_level
+     */
     void changeLevel(int desired_level=None);
 
+    /**
+     * process any event that occurs whether it is a mouse movement or a pressed key
+     * @param event
+     * @return boolean
+     */
     bool processEvent(int event);
 
+    /**
+     * used in MainWindow Object to know if it is needed to resize the application frame
+     * @return do_resize
+     */
     bool mustResize(){ return do_resize; };
 
+    /**
+     * Move the player in a certain with a determined step length (1 cell) if the move is legal (in boundaries)
+     * and manages the movement of objects on the player's way
+     * @param direction in {RIGHT, LEFT, UP, DOWN}
+     */
     void movePlayer(Point &direction);
 
+    /**
+     * Move crates if player pushes them, it also update the gameStatus by calling updateBlockedStatus()
+     * @param start
+     * @param destination
+     */
     void moveObject(Point start, Point destination);
 
 };

@@ -28,12 +28,27 @@ class Canvas {
 public:
     Canvas(std::shared_ptr<Board> board);
 
+    /**
+     * Draws for one second (60 frames) name of the student
+     * @param x windowWidth
+     * @param y windowHeight
+     */
     void drawWaitingScreen(int x, int y);
 
+    /**
+     * Draw all targets of the current board
+     */
     void drawTargets();
 
+    /**
+     * Calls draw method on each cells of the canvas
+     * and calls drawLevelInfos() et drawTargets()
+     */
     void draw();
 
+    /**
+     * Shows which level is played, its steps record and the current amount of steps
+     */
     void drawLevelInfos();
 
     void mouseMove(Point mouseLoc);

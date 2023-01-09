@@ -68,12 +68,30 @@ public:
 
     void changeTypes(Cell &c1, Cell &c2);
 
+    /**
+     * Checks if targets are all covered by a crate
+     * changes gameState to Won value
+     * @return
+     */
     bool solved();
 
+    /**
+     * States if a crate is blocked depending of its neighbors cells
+     * and sets it to blocked or not
+     * @param position
+     * @return
+     */
     bool isBlocked(Point& position);
 
+    /**
+     * Calls isBlocked() on every crate
+     * @return
+     */
     bool allBlocked();
 
+    /**
+     * Checks if the game is Lost or Won
+     */
     void updateBlockedStatus();
 
     bool checkPlayerMove(Point &direction);
@@ -82,10 +100,24 @@ public:
 
     std::vector<Point>& getTargets();
 
+    /**
+     * Loads a level from a specific text file
+     * @param text_file
+     */
     void loadBoard(const std::string &text_file);
 
+    /**
+     * Overloading of loadBoard(const std::string &text_file)
+     * Loads a level from a specific text file with int value,
+     * The loaded board is the current one
+     * @param desired_level
+     */
     void loadBoard(int desired_level = None );
 
+    /**
+     * Debug purpose
+     * prints the text file in the stdout
+     */
     void printBoard(void);
 };
 

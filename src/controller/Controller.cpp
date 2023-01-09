@@ -68,9 +68,6 @@ bool Controller::processEvent(int event)
                 case 'r':
                     board->resetRecord();
                     return true;
-                case 'u':
-                    board->updateBlockedStatus();
-                    return true;
                 case 'b':
                     changeLevel(board->getLevel()-1);
                     do_resize = true;

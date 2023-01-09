@@ -13,7 +13,6 @@
 #include <vector>
 #include <iostream>
 
-/**#include "Board.h"**/
 #include "MainWindow.h"
 
 

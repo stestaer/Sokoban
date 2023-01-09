@@ -22,7 +22,7 @@ class MainWindow : public Fl_Window {
     std::shared_ptr<Board> board;
     Canvas canvas;
     Controller controller;
-    int waitingScreen_frames = 60;
+    int waitingScreenFrames = 60;
 
 public:
 
@@ -35,13 +35,16 @@ public:
         Fl_Window::resize(Fl_Window::x_root(), Fl_Window::y_root(), board->getWidth()*cell_width+2*cell_width, board->getHeight()*cell_width+cell_width);
     }
 
+    /**
+     * MainLoop of the whole program
+     */
     void draw() override
     {
         Fl_Window::draw();
-        if (waitingScreen_frames != 0)
+        if (waitingScreenFrames != 0)
         {
             canvas.drawWaitingScreen(Fl_Window::x_root(), Fl_Window::y_root());
-            waitingScreen_frames--;
+            waitingScreenFrames--;
         }
         else
         {
