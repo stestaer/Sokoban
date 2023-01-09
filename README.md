@@ -27,5 +27,6 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 | <kbd>Space</kbd>                                                     | Recommencer niveau                |
 | <kbd>R</kbd>                                                         | Réinitialiser le record du niveau |
 | <kbd>B</kbd>                                                         | Niveau précédent                  |
+| <kbd>N</kbd>                                                         | Niveau suivant                    |
 | <kbd>L</kbd>                                                         | Quitter l'application             |
 
