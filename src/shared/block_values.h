@@ -9,6 +9,8 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 
+//Both enums are inspired from what you can find in "Labo bonus:MVC "
+
 enum CellType { Corridor, Crate, Target, Wall, Player, CrateOnTarget, PlayerOnTarget };
 
 enum GameState { Lost, Won, Playing };

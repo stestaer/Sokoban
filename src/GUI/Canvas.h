@@ -1,6 +1,6 @@
 //
 // Created by sacha on 28-11-22.
-//
+//Inspiration from Labo bonus:MVC
 #ifndef F202_CANVAS_H
 #define F202_CANVAS_H
 
