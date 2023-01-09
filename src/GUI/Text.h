@@ -20,11 +20,9 @@ class Text {
     Fl_Color color;
 
 public:
-    // Constructor
     Text(std::string s, Point center, int fontSize = 10, Fl_Color color = FL_BLACK):
             s{s}, center{center}, fontSize{fontSize}, color{color} {}
 
-    // Draw
     void draw();
 
     // Setters and getters
