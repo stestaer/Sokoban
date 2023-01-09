@@ -12,9 +12,12 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
 
 ---
 ### **Pour lancer l'application**
-- Placer vous à la racine du projet
+- Assurez vous d'avoir fltk d'installer, si ce n'est pas fait et que vous êtes sur Ubuntu: 
+
+    `sudo apt install libfltk1.3-dev`
+- Placez vous à la racine du projet
 - tapez: `make`
-- une fois fait: `./sokoban`
+- une fois fait faites: `./sokoban`
 ---
 ### Touches
 
