@@ -21,7 +21,7 @@ class Cell {
     CellType cell_type;
     bool blocked=false;
 public:
-    // Constructor
+
     Cell(Point center, int w, int h, CellType cell_type);
 
     ~Cell() = default;
