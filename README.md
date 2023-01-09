@@ -17,7 +17,7 @@ Réalisation d'un projet jeu vidéo ***sokoban***.
     `sudo apt install libfltk1.3-dev`
 - Placez vous à la racine du projet
 - tapez: `make`
-- une fois fait faites: `./sokoban`
+- une fois fait, faites: `./sokoban`
 ---
 ### Touches
 
